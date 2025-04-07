@@ -52,6 +52,7 @@ class Von_Neumann:
 
 
 class LinearCongruentialMixed:
+    @staticmethod
     def linear_congruential_mixed(self, a: int, c: int, M: int, y_i: int) -> int:
         """
         Generador Congruencial Lineal Mixto
@@ -67,7 +68,8 @@ class LinearCongruentialMixed:
         """
         return (a*y_i+c) % M
 
-    def is_maximum_period(self, a: int, c: int, M: int, ) -> bool:
+    @staticmethod
+    def is_maximum_period(a: int, c: int, M: int, ) -> bool:
         """
         Determina si se puede generar una secuencia con periodo máximo
 
