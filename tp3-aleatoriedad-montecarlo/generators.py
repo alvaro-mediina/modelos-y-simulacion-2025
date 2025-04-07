@@ -13,7 +13,9 @@ from utils import prime_factor_descomposition
 
 
 class Von_Neumann:
-    def generator(self, n: int) -> int:
+
+    @staticmethod
+    def generator(n: int) -> int:
         """
         Generador de Von Neumann
 
@@ -25,7 +27,8 @@ class Von_Neumann:
         """
         return (n ** 2 // 100) % 10000
 
-    def period(self, seed: int) -> int:
+    @staticmethod
+    def period(seed: int) -> int:
         """
         Calcula el periodo de la secuencia de Von Neumann
 
@@ -41,7 +44,7 @@ class Von_Neumann:
         while not repetition:
             if not seed in secuence:
                 secuence.append(seed)
-                seed = self.generator(seed)
+                seed = Von_Neumann.generator(n=seed)
                 period += 1
             else:
                 repetition = True
