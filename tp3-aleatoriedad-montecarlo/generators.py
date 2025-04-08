@@ -92,5 +92,19 @@ class LinearCongruentialMixed:
 
 
 class LinearCongruentialMultiplicative:
+    @staticmethod
     def linear_congruential_multiplicative(self, a: int, M: int, y_i: int) -> int:
         return (a*y_i) % M
+
+    @staticmethod
+    def is_primitive_root(a: int, M: int) -> bool:
+        pass
+
+    def root_primitive_candidates(M: int) -> list[int]:
+        root_candidates = []
+        prime_descomposition = prime_factor_descomposition(n=M)
+        candidate = 1
+        for
+        for prime in prime_descomposition:
+            if pow(candidate, (M-1//))
+        return root_candidates
