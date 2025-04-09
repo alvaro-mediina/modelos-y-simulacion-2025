@@ -9,6 +9,7 @@ Contiene a los generadores de:
 """
 
 import math
+from typing import List, Tuple
 from utils import prime_factor_descomposition
 
 
@@ -53,7 +54,7 @@ class Von_Neumann:
 
 class LinearCongruentialMixed:
     @staticmethod
-    def linear_congruential_mixed(self, a: int, c: int, M: int, y_i: int) -> int:
+    def linear_congruential_mixed(a: int, c: int, M: int, y_i: int) -> int:
         """
         Generador Congruencial Lineal Mixto
 
@@ -93,8 +94,8 @@ class LinearCongruentialMixed:
 
 class LinearCongruentialMultiplicative:
     @staticmethod
-    def linear_congruential_multiplicative(self, a: int, M: int, y_i: int) -> int:
-        return (a*y_i) % M
+    def linear_congruential_multiplicative(a: int, M: int, x_i: int) -> int:
+        return (a*x_i) % M
 
     @staticmethod
     def is_primitive_root(candidate: int, prime_factorization: list[int], M: int) -> bool:
@@ -129,3 +130,25 @@ class LinearCongruentialMultiplicative:
                 root_candidates.append(candidate)
             candidate += 1
         return root_candidates
+
+
+class InventedCongruentialWithSumm:
+    @staticmethod
+    def invented_congruential_sum(a: int, c: int, M: int, iterations: int, X_seed: int, Y_seed: int) -> Tuple[List[int], List[int], List[int]]:
+        x_i = X_seed
+        y_i = Y_seed
+        z_i = (x_i + y_i) % M
+        xs = [x_i]
+        ys = [y_i]
+        zs = [z_i]
+
+        for _ in range(iterations):
+            x_i = LinearCongruentialMultiplicative.linear_congruential_multiplicative(
+                a=a, M=M-1, x_i=x_i)
+            y_i = LinearCongruentialMixed.linear_congruential_mixed(
+                a=5, c=c, M=M, y_i=y_i)
+            z_i = (x_i + y_i) % M
+            xs.append(x_i)
+            ys.append(y_i)
+            zs.append(z_i)
+        return ys, xs, zs
