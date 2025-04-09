@@ -152,3 +152,14 @@ class InventedCongruentialWithSumm:
             ys.append(y_i)
             zs.append(z_i)
         return ys, xs, zs
+
+
+class Randu:
+    @staticmethod
+    def randu_generator(a: int, seed: int, M: int, iterations: int) -> list[int]:
+        randu_generation = [seed]
+        u_iter = seed
+        for _ in range(iterations):
+            u_iter = (a*u_iter) % M
+            randu_generation.append(u_iter)
+        return randu_generation
