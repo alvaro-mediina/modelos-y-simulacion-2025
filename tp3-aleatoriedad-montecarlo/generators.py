@@ -97,14 +97,35 @@ class LinearCongruentialMultiplicative:
         return (a*y_i) % M
 
     @staticmethod
-    def is_primitive_root(a: int, M: int) -> bool:
-        pass
+    def is_primitive_root(candidate: int, prime_factorization: list[int], M: int) -> bool:
+        """
+        Determina si el candidato es raíz primitiva de M.
 
+        Args:
+            candidate (int): candidato a raíz primitiva.
+            prime_factorization (list[int]): factorización prima de M.
+            M (int): parámetro del que se quier hallar las raíces primitivas.
+
+        Returns:
+            bool: True en caso de ser candidate raíz primitiva de M, False en caso contrario.
+        """
+        for prime in prime_factorization:
+            exp = (M - 1) // prime
+            result = pow(candidate, exp, M)
+            if result == 1:
+                return False
+        return True
+
+    @staticmethod
     def root_primitive_candidates(M: int) -> list[int]:
         root_candidates = []
-        prime_descomposition = prime_factor_descomposition(n=M)
+        prime_descomposition = prime_factor_descomposition(n=M-1)
+        print(f"Descomposición Prima de {M-1} -> {prime_descomposition}")
         candidate = 1
-        for
-        for prime in prime_descomposition:
-            if pow(candidate, (M-1//))
+        while candidate <= M-1:
+            is_candidate = LinearCongruentialMultiplicative.is_primitive_root(
+                candidate=candidate, prime_factorization=prime_descomposition, M=M)
+            if is_candidate:
+                root_candidates.append(candidate)
+            candidate += 1
         return root_candidates
