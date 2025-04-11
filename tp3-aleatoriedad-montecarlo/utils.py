@@ -63,3 +63,9 @@ def is_cousin(n: int) -> bool:
             cousin = False
         i += 6
     return cousin
+
+
+def I(a, b):
+    if a < b:
+        return 1
+    return 0
