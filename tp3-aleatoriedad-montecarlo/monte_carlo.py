@@ -16,9 +16,6 @@ class MonteCarlo:
             print(f"[ERROR] {abs(aproximations[i] - real_result)}\n")
 
     @staticmethod
-    def multi_log(real_result: float, aproximations: list[float], iterations: list[int]):
-
-    @staticmethod
     def integral_montecarlo_0_1(f: Callable[[int], float], N: int) -> float:
         integral = 0
         for _ in range(N):
