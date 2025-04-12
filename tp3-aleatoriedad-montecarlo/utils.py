@@ -2,6 +2,8 @@
     Funciones Matemáticas útiles para el lab
 """
 
+import numpy as np
+
 
 def prime_factor_descomposition(n: int) -> list[int]:
     """
@@ -69,3 +71,27 @@ def I(a, b):
     if a < b:
         return 1
     return 0
+
+
+COLORS_HEX = [
+    '#FF0000',  # Rojo intenso
+    '#00FF00',  # Verde puro
+    '#0000FF',  # Azul eléctrico
+    '#FF00FF',  # Magenta/fucsia
+    '#FFFF00',  # Amarillo brillante
+    '#00FFFF',  # Cian
+    '#FFA500',  # Naranja
+    '#800080',  # Morado
+    '#008000',  # Verde oscuro
+    '#FFC0CB'   # Rosa suave
+]
+
+
+def map_colors_in_number(numbers: list[float]) -> list[str]:
+    color: list[str] = []
+    rng = np.random.default_rng()
+    for _ in numbers:
+        color_selected = str(rng.choice(COLORS_HEX))
+        color.append(color_selected)
+
+    return color
