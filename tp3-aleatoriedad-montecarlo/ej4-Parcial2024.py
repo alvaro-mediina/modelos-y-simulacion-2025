@@ -21,7 +21,6 @@ def function_to_integrate(x: float) -> float:
 
 
 def main():
-    print("[CODEADA EN VIVO]\n")
     print("="*30)
     for n in [1000, 10000, 100000]:
         print(f"n:{n:8} I ~ {monte_carlo_1_inf(Nsim=n):.6f}")
