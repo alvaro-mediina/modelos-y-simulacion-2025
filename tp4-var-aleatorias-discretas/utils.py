@@ -1,7 +1,8 @@
 from random import random
+from math import sqrt
 
 
-class RandomVariables:
+class Utils:
 
     @staticmethod
     def numbers_between_a_b(a: int, b: int) -> int:
@@ -31,3 +32,19 @@ class RandomVariables:
         """
         summation: float = sum(n for n in numbers)
         return summation / len(numbers)
+
+    @staticmethod
+    def standar_deviation(numbers: list) -> float:
+        """
+        Desviación estándar de una lista de números
+
+        Args:
+            numbres (list): Lista de números
+
+        Returns:
+            float: Valor de la desviación estándar de la lista
+        """
+        mean: float = Utils.mean_value(numbers=numbers)
+        summation: float = sum(
+            list(map(lambda x_i: (x_i-mean) ** 2, numbers))) / len(numbers)
+        return round(sqrt(summation), 4)
