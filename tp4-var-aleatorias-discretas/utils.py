@@ -1,5 +1,5 @@
 from random import random
-from math import sqrt
+from math import sqrt, log
 
 
 class Utils:
@@ -48,3 +48,10 @@ class Utils:
         summation: float = sum(
             list(map(lambda x_i: (x_i-mean) ** 2, numbers))) / len(numbers)
         return round(sqrt(summation), 4)
+
+
+class DiscreteRandomVariables:
+    @staticmethod
+    def geometrical(p: float) -> int:
+        U = random()
+        return int(log(1-U)/log(1-p)) + 1
